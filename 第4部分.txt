@@ -1,0 +1,54 @@
+1.继承
+	注意初始化对象的顺序。
+	注意构造方法中super的使用。
+2.接口
+3.包
+
+课后练习：
+1.编写程序，定义一个Person基类，有name、age、sex三个属性；有一个printInfo()方法能够打印Person的信息。
+	定义一个Teacher类继承自Person，有一个type属性表示科目（Math、English...）；重载printInfo()方法。
+	定义一个Student类继承自Person，有一个grade属性表示年级（1、2、3）；重载printInfo()方法。
+	注意：Person只有一个构造方法Person(String name, int age, String sex)
+		Teacher只有一个构造方法Teacher(String name, int age, String sex, String type)
+		Student只有一个构造方法Student(String name, int age, String sex, int grade)
+	用以下代码进行测试：
+	Person arr[] = new Person[]{
+		new Teacher("Teacher1", 43, "male", "Math"),
+		new Teacher("Teacher2", 41, "male", "Math"),
+		new Teacher("Teacher3", 50, "female", "English"),
+		new Teacher("Teacher4", 37, "female", "English"),
+		new Student("Student1", 15, "male", 1),
+		new Student("Student2", 16, "female", 2),
+		new Student("Student3", 15, "male", 1),
+		new Student("Student4", 16, "female", 1),
+		new Person("Person1", 5, "male"),
+		new Person("Person2", 5, "male"),
+		new Person("Person3", 5, "female"),
+	};
+	for(Person p : arr){
+		p.printInfo();
+	}
+2.编写程序，在上一题的基础上进行修改。定义一个接口Guess，接口中有一个方法public void guess()。
+	Person类实现该接口。guess()方法：如果年龄大于30则输出"Teacher"，如果在8~30之间输出"Student"，如果在0~7之间输出"Child"。
+	用以下代码进行测试：
+	Guess arr[] = new Guess[]{
+		new Teacher("Teacher1", 43, "male", "Math"),
+		new Teacher("Teacher2", 41, "male", "Math"),
+		new Teacher("Teacher3", 50, "female", "English"),
+		new Teacher("Teacher4", 37, "female", "English"),
+		new Student("Student1", 15, "male", 1),
+		new Student("Student2", 16, "female", 2),
+		new Student("Student3", 15, "male", 1),
+		new Student("Student4", 16, "female", 1),
+		new Person("Person1", 5, "male"),
+		new Person("Person2", 5, "male"),
+		new Person("Person3", 5, "female"),
+	};
+	for(Guess p : arr){
+		p.guess();
+	}
+3.创建两个包a、b，在a中创建类A，A有4个方法，其访问权限均不相同。
+	在b中创建类B，在B的构造方法中初始化A的一个对象，尝试访问A的4个方法。
+	在b中创建类C，C继承与A，在C的构造方法尝试访问A的4个方法。
+4.第1部分中的课后练习第9题，当你输入的数不是整数的时候会发生什么？修改程序，进行异常处理。
+	如果输入的数不是整数，那么提示"You can only input integers."，然后重新输入，直到输入3个整数为止。
