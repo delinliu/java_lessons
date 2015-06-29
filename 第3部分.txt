@@ -1,0 +1,191 @@
+1.方法
+	*编写程序，编写一个方法，传入一个数组，返回这个数组的所有值的和。
+	*编写程序，编写一个方法，返回n!（参数为n）
+		调用这个方法，输出1+1/1!+1/2!+1/3!+...+1/n!的值。（n<=10）
+	*编写程序，编写一个方法，返回1~n范围内的所有质数。（参数为n，返回一个数组）
+	*编写程序
+		编写一个方法，打印一个数组的所有值（用空格分割）。
+		编写一个方法，传入一个整数数组，对这个数组的值从小到大排序。
+		在main方法中定义一个长度为10的整数数组，并且用1~100中的值随机初始化它。
+		然后调用打印数组的所有值的方法，再调用排序方法，在调用打印方法。
+		提示1：Math.random()可以获得一个随机的0~1的浮点数，那么如何生成1~100的随机整数？
+		提示2：如何排序？下面一段代码能够把arr[0]与arr[1]的值交换。
+			if(arr[0] < arr[1]){
+				int t = arr[0];
+				arr[0] = arr[1];
+				arr[1] = t;
+			}
+2.类
+	*编写程序，编写一个类Square（正方形），它有一个成员变量length，有一个获取面积的方法getArea，
+		初始化一个Square对象，设置它的length=10，然后输出它的面积。
+	*编写程序，修改Square类，为其添加两个构造方法：Square()、Square(int length)。如果没有参数，
+		则赋值length=1，如果有参数则赋值length为相应的值。
+		用两种初始化方法分别初始化一个Square对象，然后输出它们的面积。
+3.访问控制
+	*编写程序，编写一个类MyDate。它有私有变量month（取值为1~12）、year（>0）、day（1~31）。
+		默认值为month = 1; year = 2015; day = 1;
+		对于这三个私有变量都有对应的set和get方法。
+		set方法中需要有合法性判断条件，如setMonth(0)就是非法的。此方法setDay(day)只需要1~31就是合法。
+		有一个私有方法：boolean isLeapYear(); // 判断是否为闰年（非整百年是4的倍数即闰年，整百年是400的倍数即是闰年）
+		有一个私有方法：int daysOfMonth(); // 获取该月份的天数（注意，闰年的2月是29天）
+		有一个公有方法：void printDate(); // 输出year-month-day，然后根据daysOfMonth计算该月的天数，
+											判断day是否超出该天数，超出就输出"illegal date"
+	*编写程序，编写一个类BankAccount。
+		私有成员变量：double balance（余额）、double rate（年利率）
+		get、set方法：针对所有私有成员变量都有get、set方法，set方法需要加上合法性判断(balance>=0、rate>=0)
+		公有方法nextYear()：时间过去一年，需要计算利息，加到本金里。
+		公有方法manyYears(int n)：时间过去n年，需要计算利息，加到本金里。
+		公有方法printInfo()：打印本金、利息
+		初始化余额为10000，利率为0.1。打印100年后的账号情况。
+		
+课后练习：
+1.请看以下代码，程序的输出是什么样的？
+	static public void main(String [] args){
+		int a = 1;
+		int b = 2;
+		
+		System.out.println("main: a=" + a + ", b=" + b);
+		swap(a, b);
+		System.out.println("main: a=" + a + ", b=" + b);
+	}
+	
+	static public void swap(int a, int b){
+		System.out.println("swap: a=" + a + ", b=" + b);
+		int t = a;
+		a = b;
+		b = t;
+		System.out.println("swap: a=" + a + ", b=" + b);
+	}
+2.请看以下代码，程序的输出是什么样的？与上一题中的结果进行比较。
+	class MyInt{
+		int data;
+		MyInt(int data){
+			this.data = data;
+		}
+	}
+	public class TestMyInt{
+		public static void main(String [] args){
+			MyInt a = new MyInt(1);
+			MyInt b = new MyInt(2);
+			
+			System.out.println("main: a=" + a.data + ", b=" + b.data);
+			swap(a, b);
+			System.out.println("main: a=" + a.data + ", b=" + b.data);
+		}
+		
+		static public void swap(MyInt a, MyInt b){
+			System.out.println("swap: a=" + a.data + ", b=" + b.data);
+			int t = a.data;
+			a.data = b.data;
+			b.data = t;
+			System.out.println("swap: a=" + a.data + ", b=" + b.data);
+		}
+	}
+3.请看以下代码，程序的输出是什么样的？方法printAlphabet(char c)一共被调用了几次？
+	static public void main(String [] args){
+		printAlphabet();
+	}
+	static public void printAlphabet(){
+		printAlphabet('a');
+	}
+	static public void printAlphabet(char c){
+		if(c < 'a' || c > 'z'){
+			return;
+		}
+		System.out.println(c);
+		printAlphabet(++c);
+	}
+4.请看以下代码，回答问题：
+	class Link{
+		private char data = ' ';
+		private Link next = null;
+		
+		public Link(){}
+		
+		public Link(char data){
+			setData(data);
+		}
+		
+		public char getData(){
+			return data;
+		}
+		public void setData(char data){
+			this.data = data;
+		}
+		public Link getNext(){
+			return next;
+		}
+		public void setNext(Link next){
+			this.next = next;
+		}
+		
+		public void printAllLink(){
+			System.out.print(data);
+			if(next != null){
+				next.printAllLink();
+			}
+		}
+	}
+	
+	public class TestLink{
+		static public void main(String [] args){
+			Link arr[] = {new Link('T'),new Link('h'),new Link('i'),new Link('s'),new Link(),
+							new Link('i'),new Link('s'),new Link(),
+							new Link('a'),new Link(),
+							new Link('S'),new Link('t'),new Link('r'),new Link('i'),new Link('n'),new Link('g'),new Link('.')};
+			for(int i=0; i<arr.length-1; i++){
+				arr[i].setNext(arr[i+1]);
+			}
+			arr[0].printAllLink();
+		}
+	}
+	a.程序最终会输出什么？
+	b.思考最后一行代码（arr[0].printAllLink()）是怎么样运行的？
+	c.你已经想到了，Link类在模拟一个简单的String，它的工作原理是把一系列的char串起来。
+		请你为Link添加一个公有方法void length()，这个方法能够能够返回字符串的长度
+		请你为Link添加一个公有方法void append(char c)，这个方法能为在字符串的最后添加一个新字符，运行代码进行测试：
+			Link link = new Link('a');
+			link.append('b');
+			link.append('c');
+			link.append('d');
+			System.out.println(link.length()); // 输出4
+			link.printAllLink(); // 输出abcd
+5.我们知道，在Java中整数是有位数限制的，比如说int是32位，long是64位。但是有时候需要更大的整数怎么办呢？
+	之前写过阶乘的计算：n!，只要求n<10，当n=20或者40的时候呢？原来的计算阶乘的方法就失效了。
+	参照上一题中的Link类，写出一个大整数类LargeInt。
+	要求：
+	a.LargeInt中有一个成员变量就是LargeInt类型，这样多个LargeInt就能连成一条链
+	b.有一个公共方法printValue()，打印出这个大整数
+	c.有一个公共方法add(int num)，加上这个num。
+	d.有一个公共方法mul(int num)，乘以这个num。
+	e.私有成员和私有方法可以按照需求随便定义。
+	用以下代码进行测试：
+		LargeInt largeInt = new LargeInt(1);
+		largeInt.printValue(); // 输出1
+		largeInt.add(9);
+		largeInt.printValue(); // 输出10
+		for(int i=0; i<100; i++){
+			largeInt.mul(10); 
+		}
+		largeInt.printValue(); // 输出100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+		
+		largeInt = new LargeInt(1);
+		for(int i=1; i<=40; i++){
+			largeInt.mul(i);
+		}
+		largeInt.printValue(); // 输出40!对应的值
+	提示（想一想为什么要反向记录数字）：
+		largeInt->null
+		1
+		乘以240：
+		largeInt->null
+		240
+		largeInt->largeInt->null
+		0         24
+		largeInt->largeInt->largeInt->null
+		0         4         2
+		乘以3：
+		largeInt->largeInt->largeInt->null
+		0         12        6
+		largeInt->largeInt->largeInt->null
+		0         2         7

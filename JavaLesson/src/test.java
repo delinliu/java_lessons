@@ -1,19 +1,30 @@
+
+import java.util.*;
+class MyInt {
+	int data;
+
+	MyInt(int data) {
+		this.data = data;
+	}
+}
 public class test {
-
-	public static void main(String[] args) {
-
-		int a = 3;
-		int b = 4;
-		int c = a++ + a-- * ++b;
-		System.out.println(c);
-		
-		int n = 30;
-		long val = 1;
-		for(int i=1; i<=n; i++){
-			val = val*i;
+	static public void main(String [] args){
+		long x = 1;
+		for(int i=1; i<30; i++){
+			x *= i;
 		}
-		System.out.println(val);
-		
-		Math.sqrt(1);
+		System.out.println(x);
+	}
+
+	static public void printAlphabet() {
+		printAlphabet('a');
+	}
+
+	static public void printAlphabet(char c) {
+		if (c < 'a' || c > 'z') {
+			return;
+		}
+		System.out.print(c);
+		printAlphabet(++c);
 	}
 }
