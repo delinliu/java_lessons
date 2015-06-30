@@ -1,5 +1,5 @@
 1.方法
-	*编写程序，编写一个方法，传入一个数组，返回这个数组的所有值的和。
+	*编写程序，编写一个方法，传入一个整数数组，返回这个数组的所有值的和。
 	*编写程序，编写一个方法，返回n!（参数为n）
 		调用这个方法，输出1+1/1!+1/2!+1/3!+...+1/n!的值。（n<=10）
 	*编写程序，编写一个方法，返回1~n范围内的所有质数。（参数为n，返回一个数组）
@@ -30,13 +30,33 @@
 		有一个私有方法：int daysOfMonth(); // 获取该月份的天数（注意，闰年的2月是29天）
 		有一个公有方法：void printDate(); // 输出year-month-day，然后根据daysOfMonth计算该月的天数，
 											判断day是否超出该天数，超出就输出"illegal date"
+		用以下代码测试：
+			MyDate myDate = new MyDate();
+			myDate.printDate(); // 输出2015-1-1
+			
+			myDate.setMonth(4);
+			myDate.setDay(31);
+			myDate.printDate(); // 输出2015-4-31 illegal date
+			
+			myDate.setMonth(2);
+			myDate.setDay(29);
+			myDate.printDate(); // 输出2015-2-29 illegal date
+			
+			myDate.setYear(2012);
+			myDate.printDate(); // 输出2012-2-29
+
+			myDate.setYear(2000);
+			myDate.printDate(); // 输出2000-2-29
+			
+			myDate.setYear(1900);
+			myDate.printDate(); // 输出1900-2-29 illegal date
 	*编写程序，编写一个类BankAccount。
 		私有成员变量：double balance（余额）、double rate（年利率）
 		get、set方法：针对所有私有成员变量都有get、set方法，set方法需要加上合法性判断(balance>=0、rate>=0)
 		公有方法nextYear()：时间过去一年，需要计算利息，加到本金里。
 		公有方法manyYears(int n)：时间过去n年，需要计算利息，加到本金里。
 		公有方法printInfo()：打印本金、利息
-		初始化余额为10000，利率为0.1。打印100年后的账号情况。
+		初始化余额为10000，利率为0.05。打印100年后的账号情况。
 		
 课后练习：
 1.请看以下代码，程序的输出是什么样的？
@@ -150,9 +170,9 @@
 			link.append('d');
 			System.out.println(link.length()); // 输出4
 			link.printAllLink(); // 输出abcd
-5.我们知道，在Java中整数是有位数限制的，比如说int是32位，long是64位。但是有时候需要更大的整数怎么办呢？
+5.（注意：对于初学者这个题目很难，做不出来不用勉强）我们知道，在Java中整数是有位数限制的，比如说int是32位，long是64位。但是有时候需要更大的整数怎么办呢？
 	之前写过阶乘的计算：n!，只要求n<10，当n=20或者40的时候呢？原来的计算阶乘的方法就失效了。
-	参照上一题中的Link类，写出一个大整数类LargeInt。
+	参照上一题中的Link类，写出一个大整数类LargeInt（只需要支持非负整数）。
 	要求：
 	a.LargeInt中有一个成员变量就是LargeInt类型，这样多个LargeInt就能连成一条链
 	b.有一个公共方法printValue()，打印出这个大整数
