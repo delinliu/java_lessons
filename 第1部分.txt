@@ -81,6 +81,6 @@
 	提示，取一个字符串的第i个字符：char c = s.charAt(i);
 	如：String s = scanner.nextLine(); // 这时s=123
 		int a = 0;
-		.... // 经过一些运算之后
+		.... // 经过一些运算之后 
 		System.out.println(a); // 这时a=123
 		
